@@ -1,0 +1,3 @@
+FICTIONAL RESTAURANT POLICY | Version 1 | Effective 2026-01-01
+
+Orders may be cancelled while they are confirmed and before preparation begins. Once an order is preparing, it cannot be cancelled through the application. This is a demonstration; no real payments or deliveries are processed.

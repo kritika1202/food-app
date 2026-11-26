@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Table &amp; Tadka | Food ordering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script defer src="/script.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#menu"><span class="brand-mark">t<span>&amp;</span>t</span><span>table <i>&amp;</i> tadka<small>THE NEIGHBOURHOOD KITCHEN</small></span></a>
+    <nav class="navigation" aria-label="Main navigation">
+      <button class="nav active" data-view="menu">Menu</button><button class="nav" data-view="orders">My orders</button><button class="nav" data-view="chat">Assistant</button><button class="nav admin-only" data-view="admin" hidden>Manage</button>
+    </nav>
+    <div class="account"><span class="open-indicator"><span></span> Kitchen open</span><button id="login-button" class="outline-button"><i data-lucide="user-round"></i><span>Sign in</span></button></div>
+  </header>
+  <main>
+    <section id="view-menu" class="view">
+      <div class="page-heading"><div><div class="eyebrow"><span></span> MADE FRESH, EVERY DAY</div><h1>A little something delicious.</h1><p>Comforting favourites, made for your table.</p></div><div class="heading-note"><i data-lucide="map-pin"></i><span>Serving your neighbourhood<br><strong>Fresh from our kitchen</strong></span></div></div>
+      <div class="menu-layout">
+        <div class="menu-content">
+          <div class="section-top"><div><span class="eyebrow muted">EXPLORE THE MENU</span><h2>Find your favourite</h2></div><span id="menu-count" class="count"></span></div>
+          <div class="filters"><label class="search"><i data-lucide="search"></i><input id="search" type="search" placeholder="Search dishes" aria-label="Search dishes"></label><select id="category" aria-label="Category"><option value="">All categories</option><option>Breakfast</option><option>Main course</option><option>Drinks</option><option>Dessert</option></select><label class="check"><input type="checkbox" id="vegetarian"><span>Vegetarian only</span></label><label class="price-filter"><span>Max ₹</span><input id="max-price" type="number" min="1" placeholder="Any" aria-label="Maximum price"></label></div>
+          <div id="menu-list" class="menu-grid" aria-live="polite"></div>
+        </div>
+        <aside class="basket"><div class="basket-title"><div><span class="eyebrow muted">YOUR SELECTION</span><h2>Your basket</h2></div><span class="basket-icon"><i data-lucide="shopping-bag"></i></span></div><div id="basket-list" class="basket-list"></div><div class="basket-bottom"><div class="total"><span>Subtotal</span><strong id="basket-total">₹0</strong></div><p>Final price and availability are confirmed when you order.</p><button id="checkout" class="primary-button">Place order <i data-lucide="arrow-right"></i></button></div></aside>
+      </div>
+    </section>
+    <section id="view-orders" class="view" hidden><div class="page-heading compact"><div><div class="eyebrow"><span></span> YOUR TABLE</div><h1>My orders</h1><p>Everything you have ordered, in one place.</p></div></div><div id="orders-list" class="orders-list"></div></section>
+    <section id="view-chat" class="view" hidden><div class="page-heading compact"><div><div class="eyebrow"><span></span> HERE TO HELP</div><h1>Your kitchen assistant</h1><p>Ask about the menu, policies, or your orders.</p></div></div><div class="chat-layout"><aside class="chat-sidebar"><div class="side-heading"><strong>Conversations</strong><button id="new-chat" class="icon-button" title="New conversation" aria-label="New conversation"><i data-lucide="plus"></i></button></div><div id="sessions"></div></aside><div class="chat-main"><div class="chat-header"><span class="assistant-avatar"><i data-lucide="sparkles"></i></span><div><strong>Kitchen assistant</strong><small>Menu, orders &amp; restaurant information</small></div></div><div id="messages" class="messages" aria-live="polite"><div class="chat-empty"><span class="assistant-avatar large"><i data-lucide="sparkles"></i></span><h2>What can I help you find?</h2><p>Start a conversation to explore the menu.</p></div></div><form id="chat-form" class="chat-compose"><input id="chat-input" maxlength="4000" placeholder="Ask about a dish or your order..." aria-label="Message" required><button class="send-button" aria-label="Send message" title="Send message"><i data-lucide="arrow-up"></i></button></form></div></div></section>
+    <section id="view-admin" class="view" hidden><div class="page-heading compact"><div><div class="eyebrow"><span></span> KITCHEN OPERATIONS</div><h1>Manage the menu</h1><p>Keep the catalogue and restaurant information up to date.</p></div></div><div class="admin-layout"><div><div class="section-top"><h2>Menu items</h2><button id="new-item" class="outline-button"><i data-lucide="plus"></i> Add item</button></div><div id="admin-items"></div></div><aside class="admin-side"><h2>Knowledge base</h2><p>Upload an updated restaurant policy or ingredient guide.</p><form id="upload-form"><input type="file" id="document" accept=".pdf,.docx,.txt" required><button class="primary-button">Upload document <i data-lucide="upload"></i></button></form><hr><h2>Order status</h2><form id="status-form"><label>Order ID<input type="number" id="status-order-id" min="1" required></label><label>Next status<select id="status-value"><option>PREPARING</option><option>READY</option><option>DELIVERED</option></select></label><button class="outline-button">Update status</button></form></aside></div></section>
+  </main>
+  <footer><span>table <i>&amp;</i> tadka</span><span>Good food, shared well.</span><span>FICTIONAL KITCHEN · DEMO</span></footer>
+  <dialog id="login-dialog"><form id="login-form"><div class="dialog-title"><div><span class="eyebrow muted">WELCOME BACK</span><h2>Sign in</h2></div><button type="button" class="icon-button close-dialog" title="Close" aria-label="Close"><i data-lucide="x"></i></button></div><p>Sign in to place orders and talk to the assistant.</p><label>Username<input id="username" autocomplete="username" required></label><label>Password<input id="password" type="password" autocomplete="current-password" required></label><button class="primary-button">Sign in <i data-lucide="arrow-right"></i></button><button type="button" id="logout" class="text-button" hidden>Sign out</button></form></dialog>
+  <dialog id="item-dialog"><form id="item-form"><div class="dialog-title"><h2 id="item-form-title">Add item</h2><button type="button" class="icon-button close-dialog" title="Close" aria-label="Close"><i data-lucide="x"></i></button></div><input id="item-id" type="hidden"><label>Dish name<input id="item-title" minlength="3" maxlength="120" required></label><label>Category<input id="item-category" minlength="2" maxlength="80" required></label><label>Description<input id="item-description" maxlength="500"></label><div class="form-row"><label>Price (₹)<input id="item-price" type="number" min="0.01" step="0.01" required></label><label>Portions<input id="item-capacity" type="number" min="0" required></label></div><label class="check"><input id="item-vegetarian" type="checkbox"> Vegetarian</label><button class="primary-button">Save item</button></form></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

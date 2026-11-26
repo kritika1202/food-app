@@ -1,0 +1,3 @@
+FICTIONAL DELIVERY FAQ | Version 1 | Effective 2026-01-01
+
+This demonstration simulates ordering only. No actual delivery service or real payment is connected. Order status can progress from confirmed to preparing, ready and delivered.
